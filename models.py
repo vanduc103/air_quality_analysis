@@ -14,7 +14,7 @@ def split_features(X):
     X = numpy.array(X)
     X_list = []
 
-    year = X[..., [0]]
+    '''year = X[..., [0]]
     X_list.append(year)
 
     month = X[..., [1]]
@@ -27,7 +27,7 @@ def split_features(X):
     X_list.append(hour)
 
     season = X[..., [4]]
-    X_list.append(season)
+    X_list.append(season)'''
 
     temp = X[..., [5]]
     X_list.append(temp)
@@ -102,7 +102,7 @@ class NN_with_EntityEmbedding(Model):
     def __build_keras_model(self):
         models = []
 
-        model_year = Sequential()
+        '''model_year = Sequential()
         model_year.add(Embedding(4, 2, input_length=1))
         model_year.add(Reshape(target_shape=(2,)))
         models.append(model_year)
@@ -125,40 +125,40 @@ class NN_with_EntityEmbedding(Model):
         model_season = Sequential()
         model_season.add(Embedding(4, 2, input_length=1))
         model_season.add(Reshape(target_shape=(2,)))
-        models.append(model_season)
+        models.append(model_season)'''
 
         model_temp = Sequential()
-        model_temp.add(Dense(1, input_dim=1))
+        model_temp.add(Dense(3, input_dim=1))
         models.append(model_temp)
 
         model_hum = Sequential()
-        model_hum.add(Dense(1, input_dim=1))
+        model_hum.add(Dense(3, input_dim=1))
         models.append(model_hum)
 
         model_pres = Sequential()
-        model_pres.add(Dense(1, input_dim=1))
+        model_pres.add(Dense(3, input_dim=1))
         models.append(model_pres)
 
         model_cond = Sequential()
-        model_cond.add(Embedding(71, 10, input_length=1))
-        model_cond.add(Reshape(target_shape=(10,)))
+        model_cond.add(Embedding(71, 3, input_length=1))
+        model_cond.add(Reshape(target_shape=(3,)))
         models.append(model_cond)
 
         model_windspd = Sequential()
-        model_windspd.add(Dense(1, input_dim=1))
+        model_windspd.add(Dense(2, input_dim=1))
         models.append(model_windspd)
     
         model_winddir = Sequential()
-        model_winddir.add(Embedding(16, 8, input_length=1))
-        model_winddir.add(Reshape(target_shape=(8,)))
+        model_winddir.add(Embedding(16, 3, input_length=1))
+        model_winddir.add(Reshape(target_shape=(3,)))
         models.append(model_winddir)
 
         self.model = Sequential()
         self.model.add(Merge(models, mode='concat'))
         self.model.add(Dropout(0.5))
-        self.model.add(Dense(1000, init='uniform'))
+        self.model.add(Dense(100, init='uniform'))
         self.model.add(Activation('relu'))
-        self.model.add(Dense(500, init='uniform'))
+        self.model.add(Dense(50, init='uniform'))
         self.model.add(Activation('relu'))
         self.model.add(Dense(1))
         self.model.add(Activation('sigmoid'))
