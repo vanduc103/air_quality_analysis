@@ -33,14 +33,14 @@ for i, txt in enumerate(names):
 plt.savefig('station_embedding1.png')
 plt.show()
 
-'''pca = PCA(n_components=2)
+pca = PCA(n_components=2)
 Y = pca.fit_transform(month_embedding)
 names = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 plt.figure(figsize=(8,8))
 plt.scatter(Y[:, 0], Y[:, 1])
 for i, txt in enumerate(names):
     plt.annotate(txt, (Y[i, 0],Y[i, 1]))
-#plt.savefig('month_embedding.png')
+plt.savefig('month_embedding.png')
 
 pca = PCA(n_components=2)
 Y = pca.fit_transform(dow_embedding)
@@ -49,7 +49,7 @@ plt.figure(figsize=(8,8))
 plt.scatter(Y[:, 0], Y[:, 1])
 for i, txt in enumerate(names):
     plt.annotate(txt, (Y[i, 0],Y[i, 1]))
-#plt.savefig('dow_embedding.png')
+plt.savefig('dow_embedding.png')
 
 pca = PCA(n_components=2)
 Y = pca.fit_transform(hour_embedding)
@@ -58,7 +58,7 @@ plt.figure(figsize=(8,8))
 plt.scatter(Y[:, 0], Y[:, 1])
 for i, txt in enumerate(names):
     plt.annotate(txt, (Y[i, 0],Y[i, 1]))
-#plt.savefig('hour_embedding.png')
+plt.savefig('hour_embedding.png')
 
 pca = PCA(n_components=2)
 Y = pca.fit_transform(season_embedding)
@@ -66,6 +66,6 @@ names = ['spring', 'summer', 'fall', 'winter']
 plt.figure(figsize=(8,8))
 plt.scatter(Y[:, 0], Y[:, 1])
 for i, txt in enumerate(names):
-    plt.annotate(txt, (Y[i, 0],Y[i, 1]))'''
-#plt.savefig('season_embedding.png')
+    plt.annotate(txt, (Y[i, 0],Y[i, 1]))
+plt.savefig('season_embedding.png')
 plt.show()

@@ -120,11 +120,16 @@ class NN_with_EntityEmbedding(Model):
 
         self.model = Sequential()
         self.model.add(Merge(models, mode='concat'))
-        self.model.add(Dropout(0.5))
+        self.model.add(Dropout(0.02))
+        self.model.add(Dense(1000, init='uniform'))
+        self.model.add(Activation('relu'))
+        self.model.add(Dense(500, init='uniform'))
+        self.model.add(Activation('relu'))
         self.model.add(Dense(100, init='uniform'))
         self.model.add(Activation('relu'))
-        self.model.add(Dense(20, init='uniform'))
+        self.model.add(Dense(50, init='uniform'))
         self.model.add(Activation('relu'))
+        self.model.add(Dropout(0.5))
         self.model.add(Dense(1))
         self.model.add(Activation('sigmoid'))
 
