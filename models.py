@@ -14,7 +14,7 @@ def split_features(X):
     X = numpy.array(X)
     X_list = []
 
-    '''year = X[..., [0]]
+    year = X[..., [0]]
     X_list.append(year)
 
     month = X[..., [1]]
@@ -27,7 +27,7 @@ def split_features(X):
     X_list.append(hour)
 
     season = X[..., [4]]
-    X_list.append(season)'''
+    X_list.append(season)
 
     temp = X[..., [5]]
     X_list.append(temp)
@@ -35,7 +35,7 @@ def split_features(X):
     hum = X[..., [6]]
     X_list.append(hum)
 
-    pres = X[..., [7]]
+    '''pres = X[..., [7]]
     X_list.append(pres)
 
     cond = X[..., [8]]
@@ -45,7 +45,7 @@ def split_features(X):
     X_list.append(wind_spd)
 
     wind_dir = X[..., [10]]
-    X_list.append(wind_dir)
+    X_list.append(wind_dir)'''
 
     return X_list
 
@@ -102,7 +102,7 @@ class NN_with_EntityEmbedding(Model):
     def __build_keras_model(self):
         models = []
 
-        '''model_year = Sequential()
+        model_year = Sequential()
         model_year.add(Embedding(4, 2, input_length=1))
         model_year.add(Reshape(target_shape=(2,)))
         models.append(model_year)
@@ -125,7 +125,7 @@ class NN_with_EntityEmbedding(Model):
         model_season = Sequential()
         model_season.add(Embedding(4, 2, input_length=1))
         model_season.add(Reshape(target_shape=(2,)))
-        models.append(model_season)'''
+        models.append(model_season)
 
         model_temp = Sequential()
         model_temp.add(Dense(3, input_dim=1))
@@ -135,7 +135,7 @@ class NN_with_EntityEmbedding(Model):
         model_hum.add(Dense(3, input_dim=1))
         models.append(model_hum)
 
-        model_pres = Sequential()
+        '''model_pres = Sequential()
         model_pres.add(Dense(3, input_dim=1))
         models.append(model_pres)
 
@@ -151,7 +151,7 @@ class NN_with_EntityEmbedding(Model):
         model_winddir = Sequential()
         model_winddir.add(Embedding(16, 3, input_length=1))
         model_winddir.add(Reshape(target_shape=(3,)))
-        models.append(model_winddir)
+        models.append(model_winddir)'''
 
         self.model = Sequential()
         self.model.add(Merge(models, mode='concat'))
